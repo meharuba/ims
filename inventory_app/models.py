@@ -7,6 +7,9 @@ class District(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Dealer(models.Model):
     name = models.CharField(max_length=255)
@@ -15,6 +18,9 @@ class Dealer(models.Model):
     district = models.ForeignKey(District, on_delete=models.CASCADE)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Supplier(models.Model):
@@ -25,10 +31,16 @@ class Supplier(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(null=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
@@ -39,6 +51,9 @@ class Product(models.Model):
     net_count = models.IntegerField(default=0)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Transaction(models.Model):
@@ -55,6 +70,9 @@ class Transaction(models.Model):
     transaction_type = models.CharField(max_length=10, choices=TRANSACTION_TYPE_CHOICES)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.transaction_type} at {self.created_at}"
 
 
 class TransactionLine(models.Model):
@@ -81,4 +99,3 @@ class QuotationLine(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-
