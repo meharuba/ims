@@ -15,7 +15,28 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from inventory_app.views import MyLoginView
+
+
+
+
+
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/', MyLoginView.as_view(), name='login'),
+
+
+
 ]
+
+
+
+
+
+
+
+
+
