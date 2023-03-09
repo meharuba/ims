@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'inventory_app',
-
-
     'django_adminlte',
     'django_adminlte_theme',
 ]
