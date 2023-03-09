@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
 # from inventory_app.views import MyLoginView
 from inventory_app.views import signup
 from django.contrib.auth.views import LoginView
