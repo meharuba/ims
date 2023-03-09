@@ -14,24 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-<<<<<<< HEAD
-from django.urls import path
-from inventory_app.views import MyLoginView
-
-
-
-
-
-
-
-=======
 from django.urls import path, include
->>>>>>> master
+
+# from inventory_app.views import MyLoginView
+from inventory_app.views import signup
+from django.contrib.auth.views import LoginView
+
 
 urlpatterns = [
-    path('', include('inventory_app.urls')),
+    path('', include('inventory_app.urls'), name='inventory_app.urls'),
     path('admin/', admin.site.urls),
-    path('login/', MyLoginView.as_view(), name='login'),
+    path('login/', LoginView.as_view(template_name='login.html'), name='login'),
+    # path('login/', MyLoginView.as_view(), name='login'),
+    path('signup/', signup, name='signup'),
+
+
 
 
 
