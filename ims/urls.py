@@ -20,19 +20,19 @@ from django.urls import path, include
 # from inventory_app.views import MyLoginView
 from inventory_app.views import signup
 from django.contrib.auth.views import LoginView
+from django.views.generic import TemplateView
+# from inventory_app.views import profile
+from django.contrib.auth.decorators import login_required
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('inventory_app.urls'), name='inventory_app.urls'),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/profile/', login_required(profile), name='profile'),
     path('login/', LoginView.as_view(template_name='login.html'), name='login'),
     # path('login/', MyLoginView.as_view(), name='login'),
     path('signup/', signup, name='signup'),
-
-
-
-
+    path('example/', TemplateView.as_view(template_name='example.html'), name='example'),
 
 ]
 
