@@ -17,7 +17,30 @@ from django.contrib import admin
 from django.urls import path, include
 
 
+# from inventory_app.views import MyLoginView
+from inventory_app.views import signup
+from django.contrib.auth.views import LoginView
+
+
 urlpatterns = [
-    path('', include('inventory_app.urls')),
     path('admin/', admin.site.urls),
+    path('', include('inventory_app.urls'), name='inventory_app.urls'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('login/', LoginView.as_view(template_name='login.html'), name='login'),
+    # path('login/', MyLoginView.as_view(), name='login'),
+    path('signup/', signup, name='signup'),
+
+
+
+
+
 ]
+
+
+
+
+
+
+
+
+
