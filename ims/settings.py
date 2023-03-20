@@ -37,7 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'inventory_app',
+    # 'inventory_app',
+
+    'apps.authentication',
+    'apps.catalogue',
+    'apps.order',
+    'apps.partner',
+    'apps.quotation',
+    'apps.user',
+
     'django.contrib.humanize',
     'django_adminlte',
     'django_adminlte_theme',
@@ -127,3 +135,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ADMINLTE2_THEME = 'adminlte'
+
+AUTH_USER_MODEL = 'user.User'
+
