@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from django.urls import reverse_lazy
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -49,6 +51,15 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django_adminlte',
     'django_adminlte_theme',
+
+    "crispy_bootstrap5",
+    "debug_toolbar",
+
+    'crispy_forms',
+
+
+
+
 ]
 
 MIDDLEWARE = [
@@ -59,6 +70,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+
 ]
 
 ROOT_URLCONF = 'ims.urls'
@@ -137,4 +150,22 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ADMINLTE2_THEME = 'adminlte'
 
 AUTH_USER_MODEL = 'user.User'
+# settings.py
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
 
+
+LOGIN_REDIRECT_URL = reverse_lazy('index')
+LOGIN_URL = reverse_lazy('login')
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+INTERNAL_IPS = [
+
+    "127.0.0.1",
+
+]

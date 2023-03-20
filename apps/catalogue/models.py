@@ -11,6 +11,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    product_id = models.AutoField(primary_key=True, default=0)
     name = models.CharField(max_length=255)
     description = models.TextField(null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -21,4 +22,5 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
 
