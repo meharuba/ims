@@ -9,3 +9,4 @@ class UserRegistrationForm(UserCreationForm):
         model = get_user_model()
         fields = ('username', 'email', 'first_name')
 
+
