@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Quotation(models.Model):
-    date = models.DateTimeField()
+
     dealer = models.ForeignKey('partner.Dealer', on_delete=models.CASCADE)
     supplier = models.ForeignKey('partner.Supplier', on_delete=models.CASCADE)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
