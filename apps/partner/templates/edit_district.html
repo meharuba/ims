@@ -1,0 +1,28 @@
+{% extends 'adminlte/base.html' %}
+
+{% block title %}Edit District{% endblock %}
+{% load crispy_forms_tags %}
+
+
+{% block page_name %}
+    <h1>Edit District</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post" class="form-horizontal">
+                {% csrf_token %}
+                {{ form|crispy }}
+
+                <div class="form-group"><br>
+                    <div class="col-sm-offset-0 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                <a href="{% url 'district_list' %}" class="btn btn-primary mb-2 pull-right">Back to List</a>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,13 +1,14 @@
 {% extends 'adminlte/login.html' %}
 
-<!--{% block form %}-->
-<!--<form class="form-signin" method="post">-->
-<!--    {% csrf_token %}-->
-<!--    {{ form }}-->
-<!--    <button type="submit" class="btn btn-primary btn-block">Sign In</button>-->
-<!--</form>-->
-<!--{% endblock %}-->
+{% load crispy_forms_tags %}
+{% block content %}
+<h2>Login</h2>
+<form method="post">
+  {% csrf_token %}
 
+  {{ form|crispy }}
+  <a href="{% url 'signup' %}" class="btn btn-default btn-block btn-flat">Sign Up</a>
+  <button type="submit">Login</button>
+</form>
 
-
-
+{% endblock %}

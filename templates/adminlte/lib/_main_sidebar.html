@@ -47,8 +47,7 @@
                     </ul>
 
 
-
-                <li class="treeview">
+<li class="treeview">
                     <a href="#">
                         <i class="fa fa-group"></i> <span>Partners</span>
                         <span class="pull-right-container">
@@ -57,26 +56,27 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="#">
+                            <a href="/suppliers" >
                                 <i class="fa fa-user"></i> Supplier
                             </a>
                         </li>
                     </ul>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="#">
+                            <a href="/dealers">
                                 <i class="fa fa-user"></i> Dealer
                             </a>
                         </li>
                     </ul>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="#">
+                            <a href="/districts">
                                 <i class="fa fa-user"></i> District
                             </a>
                         </li>
                     </ul>
                 </li>
+
             <li class="treeview">
                     <a href="#">
                         <i class="fa fa-cogs"></i> <span>Catalogue</span>
@@ -122,10 +122,10 @@
                     </ul>
                 </li>
             <li>
-                    <a href="{% url 'logout' %}">
-                        <i class="fa fa-power-off"></i> <span>Logout</span>
-                    </a>
-                </li>
+            <a href="{% url 'logout' %}">
+                <i class="fa fa-power-off"></i> <span>Logout</span>
+            </a>
+        </li>
 
             {% endblock nav_links %}
             {% endblock nav_links_outer %}
@@ -134,3 +134,4 @@
     </section>
     <!-- /.sidebar -->
 </aside>
+

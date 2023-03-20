@@ -1,80 +1,13 @@
-{% extends "adminlte/base.html" %}
-{% load i18n static %}
 
-{% block body_class %}signup-page{% endblock %}
+{% extends 'adminlte/login.html' %}
 
-{% block body %}
-    <div class="register-box">
-        {% block logo %}
-        <div class="register-logo">
-            {# Mirrors block names used in _main_header.html #}
-            <a href="{% block logo_href %}/{% endblock %}">{% block logo_text %}<b style="color: #007bff;">FEGNO TECHNOLOGIES</b>{% endblock %}</a>
-        </div>
-        {% endblock %}
-        <!-- /.register-logo -->
-        <div class="register-box-body">
-            {% block signup_errors %}
-                {% if form.errors and not form.non_field_errors %}
-                    <p class="alert alert-danger">
-                        {% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}
-                            {% trans "Please correct the errors below." %}{% endif %}
-                    </p>
-                {% endif %}
+{% load crispy_forms_tags %}
+{% block login_form %}
+  <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+     {{ form|crispy }}
+    <button type="submit">Sign up</button>
 
-                {% if form.non_field_errors %}
-                    {% for error in form.non_field_errors %}
-                        <p class="alert alert-danger">
-                            {{ error }}
-                        </p>
-                    {% endfor %}
-                {% endif %}
-            {% endblock signup_errors %}
-
-            {% block signup_form %}
-                <form action="{% url 'signup' %}" method="post">
-                    {% csrf_token %}
-                    {% if message %}
-                        <p class="register-box-msg" style="color: red;">{{ message }}</p>
-                    {% else %}
-                        <p class="register-box-msg">{% trans "Sign up to start your session" %}</p>
-                    {% endif %}
-                    <div class="form-group has-feedback">
-                        <input name="username" class="form-control" placeholder="{% trans 'Username' %}">
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <input type="email" name="email" class="form-control" placeholder="{% trans 'Email' %}">
-                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <input type="password" name="password1" class="form-control" placeholder="{% trans 'Password' %}">
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <input type="password" name="password2" class="form-control" placeholder="{% trans 'Confirm password' %}">
-                        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-8">
-                            <div class="checkbox icheck">
-                                <label>
-                                    <input type="checkbox"> {% trans "I agree to the" %} <a href="#">{% trans "terms" %}</a>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-4">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">{% trans "Sign up" %}</button>
-                        </div>
-                    </div>
-                </form>
-            {% endblock signup_form %}
-
-            <button><a href="{% url 'login' %}" class="text-center">{% trans "Already have an account? Login" %}</a></button>
-
-        </div>
-    </div>
+  </form>
 {% endblock %}
-
-
-
-
