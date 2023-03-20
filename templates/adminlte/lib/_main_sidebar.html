@@ -86,14 +86,14 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="#">
+                            <a href="{% url 'catalogue:product_list' %}">
                                 <i class="fa fa-user"></i> Product
                             </a>
                         </li>
                     </ul>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="#">
+                            <a href="{% url 'catalogue:category_list' %}">
                                 <i class="fa fa-user"></i> Category
                             </a>
                         </li>
@@ -122,7 +122,10 @@
                     </ul>
                 </li>
             <li>
-
+            <a href="{% url 'logout' %}">
+                <i class="fa fa-power-off"></i> <span>Logout</span>
+            </a>
+        </li>
 
             {% endblock nav_links %}
             {% endblock nav_links_outer %}

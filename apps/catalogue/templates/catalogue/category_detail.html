@@ -1,0 +1,13 @@
+{% extends 'adminlte/base.html' %}
+
+{% block content %}
+  <h1>{{ category.name }}</h1>
+  <p>{{ category.description }}</p>
+  <a href="{% url 'catalogue:category_update' category.pk %}">Update</a>
+<a href="{% url 'catalogue:category_list' %}" class="btn btn-primary btn-sm pull-right">Back to List</a>
+
+  <form action="{% url 'catalogue:category_delete' category.pk %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Delete">
+  </form>
+{% endblock %}

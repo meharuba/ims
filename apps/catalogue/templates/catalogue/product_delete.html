@@ -1,0 +1,21 @@
+{% extends 'adminlte/base.html' %}
+
+{% block content %}
+<h1>Delete Product</h1>
+<p>Are you sure you want to delete "{{ product.name }}"?</p>
+<form method="post">
+  {% csrf_token %}
+  <input type="submit" value="Confirm" class="btn btn-danger">
+  <a href="{% url 'catalogue:product_list' %}"  class="btn btn-secondary">Cancel</a>
+</form>
+{% if deleted %}
+<div class="alert alert-success mt-3">
+  <p>The product "{{ product.name }}" has been successfully deleted.</p>
+</div>
+{% endif %}
+{% endblock %}
+
+
+
+
+

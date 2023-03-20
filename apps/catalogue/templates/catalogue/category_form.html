@@ -1,0 +1,9 @@
+{% extends 'adminlte/base.html' %}
+
+{% block content %}
+  <h1>{% if category %}Update Category{% else %}Create Category{% endif %}</h1>
+  <form method="post">
+    {% csrf_token %}
+    <input type="submit" value="Save" class="btn btn-primary">
+  </form>
+{% endblock %}
