@@ -36,35 +36,6 @@ from django.urls import path, include
 from django.urls import path
 
 
-# from apps.partner.views import (
-#     DistrictListView,
-#     DistrictCreateView,
-#     DistrictUpdateView,
-#     DistrictDeleteView,
-#     DealerListView,
-#     DealerCreateView,
-#     DealerUpdateView,
-#     DealerDeleteView,
-#     SupplierListView,
-#     SupplierCreateView,
-#     SupplierUpdateView,
-#     SupplierDeleteView,
-# )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 urlpatterns = [
@@ -83,24 +54,6 @@ urlpatterns = [
     # path('partner/', include('apps.partner.urls')),
 
 
-# path('districts/', DistrictListView.as_view(), name='district_list'),
-#     path('districts/create/', DistrictCreateView.as_view(), name='create_district'),
-#     path('districts/<int:pk>/edit/', DistrictUpdateView.as_view(), name='edit_district'),
-#     path('districts/<int:pk>/delete/', DistrictDeleteView.as_view(), name='delete_district'),
-#
-#
-#     path('dealers/', DealerListView.as_view(), name='dealer_list'),
-#     path('dealers/create/', DealerCreateView.as_view(), name='create_dealer'),
-#     path('dealers/<int:pk>/edit/', DealerUpdateView.as_view(), name='edit_dealer'),
-#     path('dealers/<int:pk>/delete/', DealerDeleteView.as_view(), name='delete_dealer'),
-#
-#
-#     path('suppliers/', SupplierListView.as_view(), name='supplier_list'),
-#     path('suppliers/create/', SupplierCreateView.as_view(), name='create_supplier'),
-#     path('suppliers/<int:pk>/edit/', SupplierUpdateView.as_view(), name='edit_supplier'),
-#     path('suppliers/<int:pk>/delete/', SupplierDeleteView.as_view(), name='delete_supplier'),
-#
-#
 
 
     path('supplier/create/', views.admin_supplier_create, name='create_supplier'),

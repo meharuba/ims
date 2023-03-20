@@ -4,9 +4,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth import logout
 from django.conf import settings
 from django.shortcuts import render, redirect
-
-
-
+from django.contrib.auth.views import LoginView
 
 class UserCreationView(CreateView):
     form_class = UserRegistrationForm
@@ -19,7 +17,7 @@ class UserCreationView(CreateView):
 # class CustomLoginView(LoginView):
 #     template_name = 'registration/login.html'
 #     success_url = reverse_lazy('index')
-from django.contrib.auth.views import LoginView
+
 class CustomLoginView(LoginView):
     template_name = 'registration/login.html'
     success_url = reverse_lazy('index')
