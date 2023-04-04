@@ -1,0 +1,31 @@
+{% extends 'adminlte/base.html' %}
+{% block content %}
+  <h1>Quotations</h1>
+  <a href="{% url 'quotation:quotation_create' %}" class="btn btn-primary">Create New Quotation</a>
+  <br><br>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Dealer</th>
+        <th>District</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for quotation in object_list %}
+          <tr>
+            <td>{{ quotation.dealer }}</td>
+            <td>{{ quotation.district }}</td>
+            <td>{{ quotation.created_at }}</td>
+            <td>
+              <a href="{% url 'quotation:quotation_detail' quotation.pk %}" class="btn" style=background-color:skyblue;">View</a>
+              <a href="{% url 'quotation:quotation_update' quotation.pk %}" class="btn"  style=background-color:skyblue;">Update</a>
+              <a href="{% url 'quotation:quotation_delete' quotation.pk %}" class="btn btn-danger">Delete</a>
+            </td>
+          </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

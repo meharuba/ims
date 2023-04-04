@@ -14,40 +14,32 @@
             </div>
         </div>
         {% endblock %}
-
         {% block form %}{% endblock %}
 
         <!-- sidebar menu: : style can be found in sidebar.less -->
         {% block nav_links_ul %}
         <ul class="sidebar-menu">
             {% block nav_links_outer %}
-            <li class="header">{% block nav_heading %}MAIN NAVIGATION{% endblock %}</li>
-
+            <li class="header">{% block nav_heading %}MAIN NAVIGATION{% endblock nav_heading %}
+            </li>
             {% block nav_links %}
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-bars"></i> <span>Quotations</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-user"></i> Quotation
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="treeview-menu">
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-user"></i> Quotation Lines
-                            </a>
-                        </li>
-                    </ul>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-bars"></i> <span>Quotations</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="{% url 'quotation:quotation_list' %}">
+                            <i class="fa fa-user"></i> Quotation
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
-
-<li class="treeview">
+            <li class="treeview">
                     <a href="#">
                         <i class="fa fa-group"></i> <span>Partners</span>
                         <span class="pull-right-container">
@@ -56,21 +48,21 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="/suppliers" >
+                            <a href="{% url 'supplier_list' %}" >
                                 <i class="fa fa-user"></i> Supplier
                             </a>
                         </li>
                     </ul>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="/dealers">
+                            <a href="{% url 'dealer_list' %}" >
                                 <i class="fa fa-user"></i> Dealer
                             </a>
                         </li>
                     </ul>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="/districts">
+                            <a href="{% url 'district_list' %}" >
                                 <i class="fa fa-user"></i> District
                             </a>
                         </li>
@@ -106,27 +98,26 @@
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
                     </a>
-                    <ul class="treeview-menu">
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="{% url 'order:sale_list' %}">
+                            <i class="fa fa-user"></i> Sale
+                        </a>
+                    </li>
+                </ul>
+                <ul class="treeview-menu">
                         <li>
-                            <a href="#">
-                                <i class="fa fa-user"></i> Transaction
+                            <a href="{% url 'order:purchase_list' %}">
+                                <i class="fa fa-user"></i> Purchase
                             </a>
                         </li>
-                    </ul>
-                    <ul class="treeview-menu">
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-user"></i> Transaction Lines
-                            </a>
-                        </li>
-                    </ul>
+                </ul>
                 </li>
             <li>
             <a href="{% url 'logout' %}">
                 <i class="fa fa-power-off"></i> <span>Logout</span>
             </a>
         </li>
-
             {% endblock nav_links %}
             {% endblock nav_links_outer %}
         </ul>

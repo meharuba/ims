@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "crispy_bootstrap5",
     'crispy_forms',
+    'mathfilters',
 
 ]
 
@@ -70,6 +71,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    # 'crispy_forms.middleware.CrispyMiddleware',
 ]
 
 ROOT_URLCONF = 'ims.urls'
@@ -162,11 +164,8 @@ AUTHENTICATION_BACKENDS = [
 
 LOGIN_REDIRECT_URL = reverse_lazy('index')
 LOGIN_URL = reverse_lazy('login')
-
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-
 CRISPY_TEMPLATE_PACK = "bootstrap5"
-
 INTERNAL_IPS = [
     "127.0.0.1",
 ]

@@ -1,0 +1,12 @@
+{% extends 'adminlte/base.html' %}
+
+{% block content %}
+  <h1>Sale List</h1>
+  <ul>
+    {% for sale in sales %}
+      <li><a href="{% url 'order:sale_detail' sale.pk %}">{{ sale }}</a></li>
+    {% empty %}
+      <li>No sales found.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
