@@ -13,7 +13,7 @@ TransactionLineFormSet = inlineformset_factory(Transaction, TransactionLine, for
 
 class PurchaseCreateView(LoginRequiredMixin, CreateView):
     model = Transaction
-    fields = ['date', 'dealer']
+    fields = ['date', 'supplier']
     template_name = 'order/purchase_create.html'
     success_url = reverse_lazy('order:purchase_list')
 
@@ -50,7 +50,7 @@ class PurchaseListView(LoginRequiredMixin, ListView):
     template_name = 'order/purchase_list.html'
     context_object_name = 'transactions'
     ordering = ['-created_at']
-    paginate_by = 10
+
 
     def get_queryset(self):
         return Transaction.objects.filter(transaction_type=Transaction.PURCHASE)
@@ -140,6 +140,7 @@ class SaleListView(LoginRequiredMixin, ListView):
     model = Quotation
     template_name = 'order/sale_list.html'
     context_object_name = 'quotations'
+    ordering = ('-id',)
 
     def get_queryset(self):
         return super().get_queryset()
@@ -150,6 +151,11 @@ class SaleDetailView(LoginRequiredMixin, DetailView):
     template_name = 'order/sale_detail.html'
     context_object_name = 'quotation'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        quotation = self.get_object()
+        context['total_price'] = sum(line.price * line.quantity for line in quotation.quotationline_set.all())
+        return context
 
 # from django.shortcuts import get_object_or_404
 # from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView

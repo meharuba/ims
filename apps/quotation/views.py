@@ -27,12 +27,6 @@ class QuotationDetail(DetailView):
         return context
 
 
-
-# class QuotationLineDetail(DetailView):
-#     model = QuotationLine
-#     template_name = "quotation_detail.html"
-#
-
 class QuotationCreate(CreateView):
     model = Quotation
     form_class = QuotationForm
@@ -81,10 +75,11 @@ class QuotationUpdate(UpdateView):
         context = self.get_context_data()
         lines = context['lines']
         with transaction.atomic():
-            self.object = form.save()
+            self.object = form.save(commit=False)  # save the form instance but don't commit yet
             if lines.is_valid():
                 lines.instance = self.object
-                lines.save()
+                lines.save()  # save the formset with the updated instances
+            self.object.save()  # now commit the main form instance
         return super().form_valid(form)
 
 
@@ -92,6 +87,12 @@ class QuotationDelete(DeleteView):
     model = Quotation
     template_name = 'quotation_confirm_delete.html'
     success_url = reverse_lazy('quotation:quotation_list')
+
+# class QuotationLineDetail(DetailView):
+#     model = QuotationLine
+#     template_name = "quotation_detail.html"
+#
+
 
 # from django.shortcuts import render, get_object_or_404
 # from .models import Quotation

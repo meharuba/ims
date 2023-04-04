@@ -16,7 +16,6 @@ class QuotationLineForm(forms.ModelForm):
         fields = ('product', 'quantity', 'price')
 
 
-
 QuotationLineFormSet = inlineformset_factory(
     Quotation, QuotationLine, form=QuotationLineForm,
     extra=1, can_delete=False

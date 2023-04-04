@@ -22,10 +22,4 @@ urlpatterns = [
     path('supplier/<int:pk>/edit/', views.edit_supplier, name='edit_supplier'),
     path('district/<int:pk>/edit/', views.edit_district, name='edit_district'),
 ]
-<<<<<<< HEAD
-=======
 
-
-
-
->>>>>>> devgowri

@@ -1,8 +1,61 @@
 {% extends 'adminlte/base.html' %}
-
+{% load mathfilters %}
+{% load static %}
 {% block content %}
-  <h1>Sale Detail</h1>
-  <p>Date: {{ sale.date }}</p>
-  <p>Dealer: {{ sale.dealer }}</p>
-  <p>Total Amount: {{ sale.total_amount }}</p>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="box">
+                <div class="box-header">
+                    <div class="text-right">
+                    </div>
+                    <h3>Sale Details</h3>
+                </div>
+                <div class="box-body">
+                    <table class="table">
+                        <tr>
+                            <th>Dealer:</th>
+                            <td>{{ quotation.dealer }}</td>
+                        </tr>
+                        <tr>
+                            <th>District:</th>
+                            <td>{{ quotation.district }}</td>
+                        </tr>
+                        <tr>
+                            <th>Created_at:</th>
+                            <td>{{ quotation.created_at }}</td>
+                        </tr>
+
+                    </table>
+                    <hr>
+                    <h5>Product Details</h5>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for line in quotation.quotationline_set.all %}
+                        <tr>
+                            <td>{{ line.product }}</td>
+                            <td>{{ line.quantity }}</td>
+                            <td>${{ line.price }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4">No quotation line items found.</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <hr>
+                    <p class="lead">Total Price: ${{ total_price|floatformat:2 }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

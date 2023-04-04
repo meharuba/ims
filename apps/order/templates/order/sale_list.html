@@ -1,12 +1,30 @@
 {% extends 'adminlte/base.html' %}
 
 {% block content %}
-  <h1>Sale List</h1>
-  <ul>
-    {% for sale in sales %}
-      <li><a href="{% url 'order:sale_detail' sale.pk %}">{{ sale }}</a></li>
-    {% empty %}
-      <li>No sales found.</li>
-    {% endfor %}
-  </ul>
+<section class="content">
+  <h1>Sale Records</h1>
+  <br><br>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Dealer</th>
+        <th>District</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for sale in object_list %}
+          <tr>
+            <td>{{ sale.dealer }}</td>
+            <td>{{ sale.district }}</td>
+            <td>{{ sale.created_at }}</td>
+            <td>
+              <a href="{% url 'order:sale_detail' sale.pk %}" class="btn" style="background-color:skyblue;">View</a>
+            </td>
+          </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
 {% endblock %}
