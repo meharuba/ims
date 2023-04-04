@@ -1,0 +1,36 @@
+{% extends 'adminlte/base.html' %}
+
+{% block content %}
+
+<section class="content-header">
+  <a href="{% url 'order:purchase_list' %}" class="btn btn-primary btn-sm pull-right">Back to List</a>
+  <h1>Update Purchase</h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-body">
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}<br>
+            <h4 class="box-title">Product Details</h4>
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped">
+                {{ lines.management_form }}
+                {% for line in lines.forms %}
+                  {{ line.as_table }}
+                {% endfor %}
+              </table>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary" type="submit">Update Purchase</button>
+              <a class="btn btn-default" href="{% url 'order:purchase_list' %}">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

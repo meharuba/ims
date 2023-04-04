@@ -37,7 +37,6 @@ class ProductCreateView(CreateView):
 
     def form_valid(self, form):
         product = form.save(commit=False)
-        product.net_count = 0
         if self.request.user.is_authenticated:
             product.created_by_id = self.request.user.pk
             product.created_at = timezone.now()
