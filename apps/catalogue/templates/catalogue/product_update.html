@@ -1,0 +1,13 @@
+{% extends 'adminlte/base.html' %}
+
+{% block content %}
+<a href="{% url 'catalogue:product_list' %}" class="btn btn-primary btn-sm pull-right">Back to List</a>
+  <h1>Update Product</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {{ category_form.as_p }}
+    <button type="submit"  class="btn btn-primary">Update</button>
+  </form>
+{% endblock %}
+

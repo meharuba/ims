@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 from django.urls import reverse_lazy
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'inventory_app',
+    # 'crispy_forms',
 
     'apps.authentication',
     'apps.catalogue',
@@ -51,15 +52,19 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django_adminlte',
     'django_adminlte_theme',
-    "crispy_bootstrap5",
     "debug_toolbar",
-
+    "crispy_bootstrap5",
     'crispy_forms',
+    'mathfilters',
+
 
 
 
 
 ]
+
+# CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -70,7 +75,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "debug_toolbar.middleware.DebugToolbarMiddleware",
-
 ]
 
 ROOT_URLCONF = 'ims.urls'
@@ -90,6 +94,8 @@ TEMPLATES = [
         },
     },
 ]
+
+
 
 WSGI_APPLICATION = 'ims.wsgi.application'
 
@@ -141,6 +147,8 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
+MEDIA_ROOT = os.path.join('public', 'media')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -149,18 +157,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ADMINLTE2_THEME = 'adminlte'
 
 AUTH_USER_MODEL = 'user.User'
+
+LOGIN_URL = '/accounts/login/'
+
 # settings.py
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
-
 
 LOGIN_REDIRECT_URL = reverse_lazy('index')
 LOGIN_URL = reverse_lazy('login')
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 INTERNAL_IPS = [
-
     "127.0.0.1",
-
 ]
