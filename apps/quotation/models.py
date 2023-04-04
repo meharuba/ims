@@ -12,10 +12,13 @@ class Quotation(models.Model):
     def price(self):
         return self.quotationline_set.all().aggregate(total=models.Sum('price'))['total'] or 0
 
+<<<<<<< HEAD
     # @property
     # def price(self):
     #     return sum(line.price for line in self.quotationline_set.all())
 
+=======
+>>>>>>> devgowri
     def __str__(self):
         return f"Quotation #{self.pk} - Dealer: {self.dealer.name}, District: {self.district.name}"
 
@@ -25,9 +28,14 @@ class QuotationLine(models.Model):
     product = models.ForeignKey('catalogue.Product', on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     price = models.DecimalField(max_digits=10, decimal_places=2)
+<<<<<<< HEAD
 
 
     def __str__(self):
         return f"QuotationLine #{self.pk} - Quotation: {self.quotation.pk}, Product: {self.product.name}"
 
+=======
+>>>>>>> devgowri
 
+    def __str__(self):
+        return f"QuotationLine #{self.pk} - Quotation: {self.quotation.pk}, Product: {self.product.name}"

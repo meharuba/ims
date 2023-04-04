@@ -1,0 +1,60 @@
+{% extends 'adminlte/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="box">
+                <div class="box-header"><h3>Purchase Details</h3></div>
+                <div class="box-body">
+                    <table class="table">
+                        <tr>
+                            <th>Supplier :</th>
+                            <td>{{ transaction.supplier }}</td>
+                        </tr>
+                        <tr>
+                            <th>Created_at :</th>
+                            <td>{{ transaction.created_at }}</td>
+                        </tr>
+                          <tr>
+                            <th>Created_by :</th>
+                            <td>{{ transaction.created_by }}</td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <h5>Products Details</h5>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for line in lines %}
+                        <tr>
+                            <td>{{ line.product }}</td>
+                            <td>{{ line.quantity }}</td>
+                            <td>{{ line.price }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3">No transaction line items found.</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <hr>
+                     <p class="lead">Total Price: ${{ total_price|floatformat:2 }}</p>
+                    <a href="{% url 'order:purchase_update' transaction.pk %}" class="btn btn-sm btn-warning">Edit
+                        Purchase</a>
+                    <a href="{% url 'order:purchase_delete' transaction.pk %}" class="btn btn-sm btn-danger">Delete
+                        Purchase</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

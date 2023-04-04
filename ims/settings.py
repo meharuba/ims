@@ -57,10 +57,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'mathfilters',
 
-
-
-
-
 ]
 
 # CRISPY_TEMPLATE_PACK = 'bootstrap5'
@@ -75,6 +71,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    # 'crispy_forms.middleware.CrispyMiddleware',
 ]
 
 ROOT_URLCONF = 'ims.urls'

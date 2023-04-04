@@ -33,11 +33,12 @@ urlpatterns = [
     path('logout/', logout_view, name='logout'),
     path('__debug__/', include('debug_toolbar.urls')),
 
-    path('partner/', include('apps.partner.urls')),
-    path('quotation/', include('apps.quotation.urls')),
 
+
+    path('partner/', include('apps.partner.urls')),
     path('catalogue/', include('apps.catalogue.urls')),
     path('order/', include('apps.order.urls')),
+    path('quotation/', include('apps.quotation.urls')),
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ]
 

@@ -1,0 +1,46 @@
+{% extends 'adminlte/base.html' %}
+
+{% block content %}
+<section class="content-header">
+  <h1>PURCHASE RECORDS
+    <a href="{% url 'order:purchase_create' %}" class="btn btn-primary mb-3 pull-right">Create Purchase</a>
+  </h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box">
+        <div class="box-header">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Supplier</th>
+                <th>Created_at</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for purchase in object_list %}
+              <tr>
+                <td>{{ purchase.supplier }}</td>
+                <td>{{ purchase.created_at}}</td>
+                <td>
+                  <a href="{% url 'order:purchase_detail' purchase.pk %}" class="btn btn-sm btn-primary">View</a>
+                  <a href="{% url 'order:purchase_update' purchase.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                  <a href="{% url 'order:purchase_delete' purchase.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="4">No purchases found.</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
